@@ -328,33 +328,82 @@
             backdrop-filter: blur(10px);
         }
         
-        .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        
-        .gallery-item {
-            width: calc(50% - 10px);
-            max-width: 200px;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+        /* Новая галерея с эффектом веера */
+        .gallery-container {
+            position: relative;
+            height: 200px;
+            margin: 30px auto;
+            max-width: 300px;
             cursor: pointer;
         }
         
-        .gallery-item:hover {
-            transform: scale(1.05);
+        .card-stack {
+            position: relative;
+            height: 100%;
+            width: 100%;
         }
         
-        .gallery-item img {
+        .card {
+            position: absolute;
             width: 100%;
-            height: 150px;
+            height: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.5s ease, opacity 0.5s ease;
             object-fit: cover;
-            display: block;
+        }
+        
+        .card:nth-child(1) {
+            transform: rotate(-5deg) translateY(0);
+            z-index: 5;
+        }
+        
+        .card:nth-child(2) {
+            transform: rotate(-2deg) translateY(5px);
+            z-index: 4;
+        }
+        
+        .card:nth-child(3) {
+            transform: rotate(1deg) translateY(10px);
+            z-index: 3;
+        }
+        
+        .card:nth-child(4) {
+            transform: rotate(4deg) translateY(15px);
+            z-index: 2;
+        }
+        
+        .card:nth-child(5) {
+            transform: rotate(7deg) translateY(20px);
+            z-index: 1;
+        }
+        
+        .gallery-container:hover .card:nth-child(1) {
+            transform: rotate(-8deg) translateY(-5px);
+        }
+        
+        .gallery-container:hover .card:nth-child(2) {
+            transform: rotate(-4deg) translateY(0);
+        }
+        
+        .gallery-container:hover .card:nth-child(3) {
+            transform: rotate(0deg) translateY(5px);
+        }
+        
+        .gallery-container:hover .card:nth-child(4) {
+            transform: rotate(4deg) translateY(10px);
+        }
+        
+        .gallery-container:hover .card:nth-child(5) {
+            transform: rotate(8deg) translateY(15px);
+        }
+        
+        .gallery-text {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: 600;
+            color: #40b4e5;
         }
         
         /* Модальное окно для галереи */
@@ -429,6 +478,19 @@
             display: none; /* Убираем подписи в галерее */
         }
         
+        .image-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1rem;
+            background: rgba(0,0,0,0.5);
+            padding: 5px 15px;
+            border-radius: 20px;
+            z-index: 1001;
+        }
+        
         @media (min-width: 768px) {
             .container {
                 max-width: 700px;
@@ -459,17 +521,9 @@
                 margin-top: 20px; /* Дополнительный отступ для выравнивания */
             }
             
-            .gallery {
-                gap: 20px;
-            }
-            
-            .gallery-item {
-                width: calc(33.333% - 15px);
-                max-width: 220px;
-            }
-            
-            .gallery-item img {
-                height: 180px;
+            .gallery-container {
+                height: 250px;
+                max-width: 350px;
             }
         }
 
@@ -497,13 +551,13 @@
                 <div class="characters">
                     <div class="character">
                         <div class="character-img">
-                            <img src="https://thumbs2.imgbox.com/66/41/fQ20xJeJ_t.jpeg" alt="Плюшка">
+                            <img src="https://images2.imgbox.com/53/da/RvVYYM5g_o.jpeg" alt="Плюшка">
                         </div>
                         <h3>Плюшка</h3>
                     </div>
                     <div class="character">
                         <div class="character-img">
-                            <img src="https://images2.imgbox.com/5d/da/KDWNxxxv_o.jpeg" alt="Чебурашка">
+                            <img src="https://images2.imgbox.com/7c/b9/tc34Auei_o.jpeg" alt="Чебурашка">
                         </div>
                         <h3>Чебурашка</h3>
                     </div>
@@ -564,17 +618,16 @@
             
             <section class="additional">
                 <h2>Галерея</h2>
-                <div class="gallery">
-                    <div class="gallery-item" onclick="openModal(0)">
-                        <img src="https://images2.imgbox.com/66/41/fQ20xJeJ_o.jpeg" alt="Плюшка">
-                    </div>
-                    <div class="gallery-item" onclick="openModal(1)">
-                        <img src="https://images2.imgbox.com/3a/82/hRJuXsMD_o.jpeg" alt="Плюшка и Чебурашка">
-                    </div>
-                    <div class="gallery-item" onclick="openModal(2)">
-                        <img src="https://images2.imgbox.com/5d/da/KDWNxxxv_o.jpeg" alt="Чебурашка">
+                <div class="gallery-container" onclick="openModal(0)">
+                    <div class="card-stack">
+                        <img class="card" src="https://images2.imgbox.com/66/41/fQ20xJeJ_o.jpeg" alt="Плюшка">
+                        <img class="card" src="https://images2.imgbox.com/3a/82/hRJuXsMD_o.jpeg" alt="Плюшка и Чебурашка">
+                        <img class="card" src="https://images2.imgbox.com/5d/da/KDWNxxxv_o.jpeg" alt="Чебурашка">
+                        <img class="card" src="https://images2.imgbox.com/40/17/MBbsuu95_o.jpeg" alt="Праздник">
+                        <img class="card" src="https://images2.imgbox.com/5c/7d/ou70vL5s_o.jpeg" alt="Праздник">
                     </div>
                 </div>
+                <p class="gallery-text">Нажмите, чтобы посмотреть все фото</p>
             </section>
             
             <section class="contacts">
@@ -618,6 +671,7 @@
         <span class="prev" onclick="changeSlide(-1)">&#10094;</span>
         <span class="next" onclick="changeSlide(1)">&#10095;</span>
         <img class="modal-content" id="modalImage">
+        <div class="image-counter" id="imageCounter">1 / 25</div>
         <div class="caption" id="caption"></div>
     </div>
 
@@ -714,7 +768,7 @@
         // Анимация появления элементов при прокрутке
         document.addEventListener('DOMContentLoaded', function() {
             const animateOnScroll = function() {
-                const elements = document.querySelectorAll('.service-item, .detail-card, .character, .gallery-item, .contact-person');
+                const elements = document.querySelectorAll('.service-item, .detail-card, .character, .gallery-container, .contact-person');
                 
                 elements.forEach(element => {
                     const elementPosition = element.getBoundingClientRect().top;
@@ -727,7 +781,7 @@
                 });
             };
             
-            const animatedElements = document.querySelectorAll('.service-item, .detail-card, .character, .gallery-item, .contact-person');
+            const animatedElements = document.querySelectorAll('.service-item, .detail-card, .character, .gallery-container, .contact-person');
             animatedElements.forEach(element => {
                 element.style.opacity = '0';
                 element.style.transform = 'translateY(20px)';
@@ -743,7 +797,29 @@
         const galleryImages = [
             {src: "https://images2.imgbox.com/66/41/fQ20xJeJ_o.jpeg", alt: "Плюшка"},
             {src: "https://images2.imgbox.com/3a/82/hRJuXsMD_o.jpeg", alt: "Плюшка и Чебурашка"},
-            {src: "https://images2.imgbox.com/5d/da/KDWNxxxv_o.jpeg", alt: "Чебурашка"}
+            {src: "https://images2.imgbox.com/5d/da/KDWNxxxv_o.jpeg", alt: "Чебурашка"},
+            {src: "https://images2.imgbox.com/40/17/MBbsuu95_o.jpeg", alt: "Праздник"},
+            {src: "https://images2.imgbox.com/5c/7d/ou70vL5s_o.jpeg", alt: "Праздник"},
+            {src: "https://images2.imgbox.com/7c/b9/tc34Auei_o.jpeg", alt: "Праздник"},
+            {src: "https://images2.imgbox.com/cc/65/x1646prl_o.jpeg", alt: "Праздник"},
+            {src: "https://images2.imgbox.com/77/db/CynMjfr6_o.jpeg", alt: "Праздник"},
+            {src: "https://images2.imgbox.com/4b/08/7Yy3P1Su_o.jpeg", alt: "Праздник"},
+            {src: "https://images2.imgbox.com/0a/d1/eIiNttoM_o.jpeg", alt: "Праздник"},
+            {src: "https://images2.imgbox.com/c6/9b/F53ZXMQ5_o.jpeg", alt: "Праздник"},
+            {src: "https://images2.imgbox.com/62/40/855jKz3G_o.jpeg", alt: "Праздник"},
+            {src: "https://images2.imgbox.com/46/16/XMMuOdJV_o.jpeg", alt: "Праздник"},
+            {src: "https://images2.imgbox.com/6c/37/ufxlpyrd_o.jpeg", alt: "Праздник"},
+            {src: "https://images2.imgbox.com/53/da/RvVYYM5g_o.jpeg", alt: "Праздник"},
+            {src: "https://images2.imgbox.com/9f/47/FOEPQmuj_o.jpeg", alt: "Праздник"},
+            {src: "https://images2.imgbox.com/61/82/luZx9UcU_o.jpeg", alt: "Праздник"},
+            {src: "https://images2.imgbox.com/9c/5d/1b5FH6Mz_o.jpeg", alt: "Праздник"},
+            {src: "https://images2.imgbox.com/3a/ce/MghpebkF_o.jpeg", alt: "Праздник"},
+            {src: "https://images2.imgbox.com/cb/79/as7qmmEO_o.jpeg", alt: "Праздник"},
+            {src: "https://images2.imgbox.com/6a/92/ZhN64cq7_o.jpeg", alt: "Праздник"},
+            {src: "https://images2.imgbox.com/63/a2/EIkPpFAJ_o.jpeg", alt: "Праздник"},
+            {src: "https://images2.imgbox.com/09/13/E81WIxCb_o.jpeg", alt: "Праздник"},
+            {src: "https://images2.imgbox.com/7a/07/s1EtBG9v_o.jpeg", alt: "Праздник"},
+            {src: "https://images2.imgbox.com/d9/97/VqOFjYaz_o.jpeg", alt: "Праздник"}
         ];
 
         function openModal(index) {
@@ -779,10 +855,12 @@
 
         function updateModalImage() {
             const modalImg = document.getElementById("modalImage");
+            const counter = document.getElementById("imageCounter");
             const caption = document.getElementById("caption");
             modalImg.src = galleryImages[currentSlideIndex].src;
             modalImg.alt = galleryImages[currentSlideIndex].alt;
             caption.innerHTML = galleryImages[currentSlideIndex].alt;
+            counter.innerHTML = `${currentSlideIndex + 1} / ${galleryImages.length}`;
         }
 
         // Закрытие модального окна при клике вне изображения
