@@ -7,6 +7,9 @@
     <meta name="keywords" content="организация праздников, детский праздник, день рождения, Оренбург, Плюшка, Чебурашка, аниматоры">
     <title>Большие Радости - Организация праздников в Оренбурге | Плюшка и Чебурашка</title>
     
+    <!-- Telegram Web App -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    
     <!-- Schema.org markup for Local Business -->
     <script type="application/ld+json">
     {
@@ -811,6 +814,25 @@
             z-index: 1001;
         }
 
+        /* Telegram-specific styles */
+        .tg-back-button {
+            display: none;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1000;
+            background: rgba(64, 180, 229, 0.9);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+
         /* Адаптивность для мобильных устройств */
         @media (max-width: 768px) {
             .additional {
@@ -963,6 +985,9 @@
 </head>
 <body>
     <canvas id="magicCanvas"></canvas>
+    
+    <!-- Telegram Back Button -->
+    <button class="tg-back-button" id="tgBackButton" onclick="handleTelegramBack()">←</button>
     
     <div class="content-wrapper">
         <header role="banner">
@@ -1129,6 +1154,65 @@
     </div>
 
     <script>
+        // Telegram Web App Integration
+        let tg = window.Telegram?.WebApp;
+        
+        function initTelegramApp() {
+            if (tg) {
+                // Expand to full screen
+                tg.expand();
+                
+                // Enable closing confirmation
+                tg.enableClosingConfirmation();
+                
+                // Set background color
+                tg.setBackgroundColor('#40b4e5');
+                
+                // Handle back button
+                tg.BackButton.onClick(handleTelegramBack);
+                
+                console.log('Telegram Web App initialized');
+            }
+        }
+        
+        function handleTelegramBack() {
+            const modal = document.getElementById("galleryModal");
+            const gridGallery = document.getElementById("gridGallery");
+            
+            if (modal && modal.style.display === "flex") {
+                closeModal();
+                return;
+            }
+            
+            if (gridGallery && gridGallery.style.display === "grid") {
+                closeGridGallery();
+                return;
+            }
+            
+            // If no modals open, close the app
+            if (tg) {
+                tg.close();
+            }
+        }
+        
+        function showTelegramBackButton() {
+            const backButton = document.getElementById('tgBackButton');
+            if (backButton && tg) {
+                backButton.style.display = 'block';
+                tg.BackButton.show();
+            }
+        }
+        
+        function hideTelegramBackButton() {
+            const backButton = document.getElementById('tgBackButton');
+            if (backButton) {
+                backButton.style.display = 'none';
+            }
+            if (tg) {
+                tg.BackButton.hide();
+            }
+        }
+
         // Массив изображений галереи
         const galleryImages = [
             {src: "https://images2.imgbox.com/4b/08/7Yy3P1Su_o.jpeg", alt: "Чебурашка и мишка вместе", title: "Чебурашка и мишка вместе"},
@@ -1174,12 +1258,14 @@
             document.getElementById('fanContainer').style.display = 'none';
             document.getElementById('gridGallery').style.display = 'grid';
             document.getElementById('backToFan').style.display = 'block';
+            showTelegramBackButton();
         }
 
         function closeGridGallery() {
             document.getElementById('gridGallery').style.display = 'none';
             document.getElementById('backToFan').style.display = 'none';
             document.getElementById('fanContainer').style.display = 'block';
+            hideTelegramBackButton();
         }
 
         // Функция для перестановки карточек в веере
@@ -1273,6 +1359,7 @@
                 modal.setAttribute('aria-hidden', 'false');
                 updateModalImage();
                 document.body.style.overflow = 'hidden';
+                showTelegramBackButton();
             }
         }
 
@@ -1282,6 +1369,7 @@
                 modal.style.display = "none";
                 modal.setAttribute('aria-hidden', 'true');
                 document.body.style.overflow = 'auto';
+                hideTelegramBackButton();
             }
         }
 
@@ -1308,6 +1396,9 @@
 
         // Инициализация при загрузке страницы
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Telegram Web App
+            initTelegramApp();
+            
             updateFanDisplay();
             createGridGallery();
             
