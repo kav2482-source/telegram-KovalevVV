@@ -3,7 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Большие Радости - Организация праздников</title>
+    <meta name="description" content="Организация праздников в Оренбурге и области с персонажами Плюшка и Чебурашка. Детские праздники, дни рождения, корпоративы. Доступные цены от 3000 руб.">
+    <meta name="keywords" content="организация праздников, детский праздник, день рождения, Оренбург, Плюшка, Чебурашка, аниматоры">
+    <title>Большие Радости - Организация праздников в Оренбурге | Плюшка и Чебурашка</title>
+    
+    <!-- Schema.org markup for Local Business -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Большие Радости",
+        "description": "Организация праздников в Оренбургской области с персонажами Плюшка и Чебурашка",
+        "address": {
+            "@type": "PostalAddress",
+            "addressRegion": "Оренбургская область",
+            "addressLocality": "Оренбург"
+        },
+        "telephone": "+7-908-322-26-68",
+        "areaServed": "Оренбург и Оренбургская область",
+        "serviceType": "Организация праздников",
+        "priceRange": "3000-10000 руб."
+    }
+    </script>
+    
     <style>
         * {
             margin: 0;
@@ -170,6 +192,8 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.04);
             border-left: 4px solid #40b4e5;
             transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
         
         .service-item:hover {
@@ -180,6 +204,94 @@
             color: #40b4e5;
             margin-bottom: 8px;
             font-size: 1.1rem;
+        }
+        
+        /* Специальный стиль для музыкального сопровождения */
+        .service-item.music-service {
+            background: url('https://thumbs2.imgbox.com/7e/1f/Y7Pae1Vl_t.jpg') center/cover no-repeat;
+            position: relative;
+            color: white;
+            border-left: 4px solid #ffd700;
+        }
+        
+        .service-item.music-service::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+        
+        .service-item.music-service h3,
+        .service-item.music-service p {
+            position: relative;
+            z-index: 2;
+            color: white;
+        }
+        
+        .service-item.music-service h3 {
+            color: #ffd700;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        
+        /* Стили для кликабельного текста */
+        .clickable-text {
+            color: #ffd700;
+            cursor: pointer;
+            text-decoration: underline;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .clickable-text:hover {
+            color: #ffed4e;
+            text-shadow: 0 0 8px rgba(255, 237, 78, 0.5);
+        }
+        
+        /* Стили для списка песен */
+        .songs-list {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 2;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .song-item {
+            margin-bottom: 12px;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .song-item:hover {
+            transform: translateX(5px);
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .song-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Уменьшенные размеры для плееров на мобильных устройствах */
+        .song-item iframe {
+            width: 100%;
+            height: 175px;
+            border-radius: 6px;
+            border: none;
         }
         
         .details {
@@ -200,6 +312,12 @@
             text-align: center;
             border: 1px solid #e0f0ff;
             transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         
         .detail-card:hover {
@@ -220,20 +338,268 @@
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
         
+        /* НОВЫЕ СТИЛИ ДЛЯ БЛОКОВ С ФОНОВЫМИ ИЗОБРАЖЕНИЯМИ */
+        .service-item.photo-service {
+            background-image: url("https://thumbs2.imgbox.com/4e/19/ftWOivvZ_t.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+            border-left: 4px solid #ffd700;
+            position: relative;
+        }
+
+        .service-item.photo-service::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+            border-radius: 8px;
+        }
+
+        .service-item.photo-service h3,
+        .service-item.photo-service p {
+            position: relative;
+            z-index: 2;
+            color: white;
+        }
+
+        .service-item.photo-service h3 {
+            color: #ffd700;
+        }
+
+        .service-item.gift-service {
+            background-image: url("https://thumbs2.imgbox.com/f7/42/E1Rr3Auz_t.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+            border-left: 4px solid #ffd700;
+            position: relative;
+        }
+
+        .service-item.gift-service::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+            border-radius: 8px;
+        }
+
+        .service-item.gift-service h3,
+        .service-item.gift-service p {
+            position: relative;
+            z-index: 2;
+            color: white;
+        }
+
+        .service-item.gift-service h3 {
+            color: #ffd700;
+        }
+        
+        /* Фоновые изображения для блоков стоимости */
+        .detail-card.service-area {
+            background-image: url("https://thumbs2.imgbox.com/d1/9f/uFNS7hcT_t.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+            border-left: 4px solid #40b4e5;
+        }
+
+        .detail-card.price-service {
+            background-image: url("https://thumbs2.imgbox.com/31/60/Azl1pTXV_t.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .detail-card.extra-service {
+            background-image: url("https://thumbs2.imgbox.com/18/40/irmWLn5S_t.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+            border-left: 4px solid #a855f7;
+        }
+
+        /* Затемнение фона для лучшей читаемости текста */
+        .detail-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+            border-radius: 8px;
+        }
+
+        /* Поднимаем текст над затемнением */
+        .detail-card h3,
+        .detail-card p,
+        .detail-card .price {
+            position: relative;
+            z-index: 2;
+            color: white;
+        }
+
+        /* Специальный стиль для цен */
+        .detail-card .price {
+            color: #ffd700;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+        }
+        
+        /* СЕКЦИЯ ГАЛЕРЕИ С ВЕЕРОМ ВНИЗУ */
         .additional {
-            background: rgba(240, 249, 255, 0.9);
+            background: url('https://thumbs2.imgbox.com/12/0a/ZnhVl9v6_t.jpg') no-repeat center center;
+            background-size: cover;
+            padding: 60px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Текстовая часть сверху */
+        .text-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+        }
+
+        .text-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #ffd700;
+        }
+
+        .text-content p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        /* Веер внизу */
+        .fan-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: auto;
+        }
+
+        /* КВАДРАТНЫЙ ВЕЕР */
+        .fan-gallery {
+            text-align: center;
+            position: relative;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .fan-container {
+            position: relative;
+            height: 350px;
+        }
+
+        .fan-card {
+            position: absolute;
+            width: 70%;
+            height: 220px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            transition: all 0.5s ease;
+            object-fit: cover;
+            left: 15%;
+            cursor: pointer;
+            border: 3px solid white;
         }
         
-        .additional-info {
-            max-width: 100%;
-            margin: 0 auto;
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            border: 1px solid #e0f0ff;
+        .fan-card.fallback {
+            background: linear-gradient(135deg, #40b4e5, #a855f7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Расположение карточек в веере */
+        .fan-card.card-front {
+            transform: rotate(0deg);
+            z-index: 3;
+            top: 50px;
+        }
+
+        .fan-card.card-middle {
+            transform: rotate(-8deg) translateY(-20px) translateX(12px);
+            z-index: 2;
+            top: 50px;
+        }
+
+        .fan-card.card-back {
+            transform: rotate(-16deg) translateY(-40px) translateX(24px);
+            z-index: 1;
+            top: 50px;
+        }
+
+        .fan-card.card-front:hover {
+            transform: rotate(0deg) translateY(-8px) scale(1.03);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+        }
+
+        /* Сетка галереи */
+        .grid-gallery {
+            display: none;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+            width: 100%;
         }
         
+        .grid-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+            aspect-ratio: 4/3;
+        }
+        
+        .grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .back-to-fan {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+
         .contacts {
             background: rgba(64, 180, 229, 0.9);
             color: white;
@@ -327,122 +693,79 @@
             margin-top: 20px;
             backdrop-filter: blur(10px);
         }
-        
-        /* Новая галерея с эффектом веера */
-        .gallery-container {
-            position: relative;
-            height: 200px;
-            margin: 30px auto;
-            max-width: 300px;
+
+        /* Кнопки */
+        .back-btn {
+            background: #40b4e5;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
             cursor: pointer;
-        }
-        
-        .card-stack {
-            position: relative;
-            height: 100%;
-            width: 100%;
-        }
-        
-        .card {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            transition: transform 0.5s ease, opacity 0.5s ease;
-            object-fit: cover;
-        }
-        
-        .card:nth-child(1) {
-            transform: rotate(-5deg) translateY(0);
-            z-index: 5;
-        }
-        
-        .card:nth-child(2) {
-            transform: rotate(-2deg) translateY(5px);
-            z-index: 4;
-        }
-        
-        .card:nth-child(3) {
-            transform: rotate(1deg) translateY(10px);
-            z-index: 3;
-        }
-        
-        .card:nth-child(4) {
-            transform: rotate(4deg) translateY(15px);
-            z-index: 2;
-        }
-        
-        .card:nth-child(5) {
-            transform: rotate(7deg) translateY(20px);
-            z-index: 1;
-        }
-        
-        .gallery-container:hover .card:nth-child(1) {
-            transform: rotate(-8deg) translateY(-5px);
-        }
-        
-        .gallery-container:hover .card:nth-child(2) {
-            transform: rotate(-4deg) translateY(0);
-        }
-        
-        .gallery-container:hover .card:nth-child(3) {
-            transform: rotate(0deg) translateY(5px);
-        }
-        
-        .gallery-container:hover .card:nth-child(4) {
-            transform: rotate(4deg) translateY(10px);
-        }
-        
-        .gallery-container:hover .card:nth-child(5) {
-            transform: rotate(8deg) translateY(15px);
-        }
-        
-        .gallery-text {
-            text-align: center;
-            margin-top: 15px;
             font-weight: 600;
-            color: #40b4e5;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
         }
-        
-        /* Модальное окно для галереи */
-        .modal {
+
+        .back-btn:hover {
+            background: #2a9fd8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(64, 180, 229, 0.3);
+        }
+
+        .back-btn:active {
+            transform: translateY(0);
+        }
+
+        .back-to-fan {
             display: none;
+            text-align: center;
+            margin: 25px 0 10px;
+        }
+
+        /* Стили для модального окна с навигацией */
+        .modal {
             position: fixed;
-            z-index: 1000;
-            left: 0;
             top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.9);
-            backdrop-filter: blur(5px);
+            background-color: rgba(0,0,0,0.95);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
             overflow: hidden;
         }
-        
+
         .modal-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            max-width: 95%;
-            max-height: 95%;
+            max-width: 90%;
+            max-height: 80%;
             object-fit: contain;
+            border-radius: 5px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
         }
-        
+
         .close {
             position: absolute;
-            top: 15px;
-            right: 15px;
+            top: 20px;
+            right: 30px;
             color: #fff;
             font-size: 40px;
             font-weight: bold;
             cursor: pointer;
             z-index: 1001;
-            text-shadow: 0 0 5px rgba(0,0,0,0.5);
+            transition: color 0.3s ease;
         }
-        
-        .prev, .next {
+
+        .close:hover {
+            color: #ff6b6b;
+        }
+
+        .nav-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
@@ -452,45 +775,115 @@
             cursor: pointer;
             padding: 16px;
             z-index: 1001;
-            background-color: rgba(0,0,0,0.3);
+            background-color: rgba(0,0,0,0.5);
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s ease;
+            border: none;
         }
-        
-        .prev:hover, .next:hover {
-            background-color: rgba(0,0,0,0.7);
+
+        .nav-btn:hover {
+            background-color: rgba(0,0,0,0.8);
         }
-        
+
         .prev {
-            left: 10px;
+            left: 20px;
         }
-        
+
         .next {
-            right: 10px;
+            right: 20px;
         }
-        
-        .caption {
-            display: none; /* Убираем подписи в галерее */
-        }
-        
+
         .image-counter {
             position: absolute;
-            bottom: 20px;
+            bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
             color: white;
-            font-size: 1rem;
-            background: rgba(0,0,0,0.5);
-            padding: 5px 15px;
+            font-size: 1.1rem;
+            background: rgba(0,0,0,0.6);
+            padding: 8px 20px;
             border-radius: 20px;
             z-index: 1001;
         }
+
+        /* Адаптивность для мобильных устройств */
+        @media (max-width: 768px) {
+            .additional {
+                padding: 40px 20px;
+                min-height: 70vh;
+            }
+            
+            .fan-gallery {
+                max-width: 400px;
+            }
+            
+            .fan-container {
+                height: 300px;
+            }
+            
+            .fan-card {
+                height: 180px;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .text-content h3 {
+                font-size: 1.5rem;
+            }
+            
+            .text-content p {
+                font-size: 1rem;
+            }
+            
+            .nav-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+                padding: 12px;
+            }
+            
+            .prev {
+                left: 10px;
+            }
+            
+            .next {
+                right: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .fan-gallery {
+                max-width: 350px;
+            }
+            
+            .fan-container {
+                height: 250px;
+            }
+            
+            .fan-card {
+                height: 150px;
+            }
+            
+            .additional {
+                padding: 30px 15px;
+            }
+            
+            .nav-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+                padding: 8px;
+            }
+        }
         
+        /* Адаптивность для больших экранов */
         @media (min-width: 768px) {
             .container {
                 max-width: 700px;
@@ -504,37 +897,66 @@
             .contact-list {
                 flex-direction: row;
                 justify-content: center;
-                align-items: flex-start; /* Выравниваем по верхнему краю */
+                align-items: flex-start;
             }
             
             .contact-person {
                 flex: 1;
                 max-width: 300px;
-                min-height: 220px; /* Фиксированная высота для выравнивания */
+                min-height: 220px;
                 display: flex;
                 flex-direction: column;
-                justify-content: space-between; /* Равномерное распределение */
+                justify-content: space-between;
             }
             
-            /* Для Владислава добавляем отступ сверху для номера */
-            .contact-person:nth-child(2) .phone-btn {
-                margin-top: 20px; /* Дополнительный отступ для выравнивания */
+            .grid-gallery {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+                padding: 0 20px;
             }
             
-            .gallery-container {
-                height: 250px;
-                max-width: 350px;
+            .fan-container {
+                height: 220px;
+            }
+            
+            .fan-card {
+                height: 180px;
+            }
+            
+            .songs-list {
+                padding: 20px;
+            }
+            
+            /* Увеличенные размеры плееров на больших экранах */
+            .song-item iframe {
+                height: 175px;
             }
         }
 
-        /* Дополнительные стили для выравнивания номеров на ПК */
         @media (min-width: 1024px) {
+            .container {
+                max-width: 1200px;
+            }
+            
             .contact-person {
                 min-height: 200px;
             }
             
-            .contact-person:nth-child(2) .phone-btn {
-                margin-top: 25px; /* Увеличиваем отступ для лучшего выравнивания */
+            .grid-gallery {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 25px;
+                padding: 0 40px;
+            }
+            
+            /* Еще больше на больших экранах */
+            .song-item iframe {
+                height: 175px;
+            }
+        }
+
+        @media (min-width: 1400px) {
+            .grid-gallery {
+                gap: 30px;
             }
         }
     </style>
@@ -543,7 +965,7 @@
     <canvas id="magicCanvas"></canvas>
     
     <div class="content-wrapper">
-        <header>
+        <header role="banner">
             <div class="container">
                 <h1>Большие Радости</h1>
                 <p class="subtitle">Медведица Плюшка и Чебурашка спешат провести ваш праздник и подарить незабываемые эмоции</p>
@@ -551,13 +973,13 @@
                 <div class="characters">
                     <div class="character">
                         <div class="character-img">
-                            <img src="https://images2.imgbox.com/53/da/RvVYYM5g_o.jpeg" alt="Плюшка">
+                            <img src="https://images2.imgbox.com/53/da/RvVYYM5g_o.jpeg" alt="Плюшка - веселый мишка для праздников" loading="lazy" width="100" height="100">
                         </div>
                         <h3>Плюшка</h3>
                     </div>
                     <div class="character">
                         <div class="character-img">
-                            <img src="https://images2.imgbox.com/7c/b9/tc34Auei_o.jpeg" alt="Чебурашка">
+                            <img src="https://images2.imgbox.com/7c/b9/tc34Auei_o.jpeg" alt="Чебурашка - персонаж для детских мероприятий" loading="lazy" width="100" height="100">
                         </div>
                         <h3>Чебурашка</h3>
                     </div>
@@ -565,7 +987,7 @@
             </div>
         </header>
         
-        <div class="container">
+        <main class="container" role="main">
             <section class="services">
                 <h2>Наши услуги</h2>
                 
@@ -574,17 +996,35 @@
                     <p>15-20 минут яркого и веселого выступления</p>
                 </div>
                 
-                <div class="service-item">
+                <div class="service-item music-service">
                     <h3>Музыкальное сопровождение</h3>
-                    <p>5 музыкальных песен, из которых 3 на ваш выбор</p>
+                    <p><span class="clickable-text" id="songToggle" role="button" aria-expanded="false" aria-controls="songsList">5 музыкальных песен</span>, из которых 3 на ваш выбор</p>
+                    
+                    <div class="songs-list" id="songsList" aria-hidden="true">
+                        <div class="song-item">
+                            <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="175" style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/song/%D1%81-%D0%B4%D0%BD%D1%91%D0%BC-%D1%80%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D1%8F/1728238626" title="С днём рождения"></iframe>
+                        </div>
+                        <div class="song-item">
+                            <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="175" style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/it/song/%D1%81-%D0%B4%D0%BD%D1%91%D0%BC-%D1%80%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D1%8F/1628541621" title="С днём рождения"></iframe>
+                        </div>
+                        <div class="song-item">
+                            <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="175" style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/fr/song/%D1%84%D0%B5%D0%B4%D0%B5%D1%80%D0%B8%D0%BA%D0%BE-%D1%84%D0%B5%D0%BB%D0%BB%D0%B8%D0%BD%D0%B8/1564975233" title="Федерико Феллини"></iframe>
+                        </div>
+                        <div class="song-item">
+                            <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="175" style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/ru/song/%D1%81%D0%B0%D0%BC%D0%BE-%D1%81%D0%BE%D0%B1%D0%BE%D0%B9/1809957699" title="Само собой"></iframe>
+                        </div>
+                        <div class="song-item">
+                            <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="175" style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/ru/song/%D1%87%D0%B5%D0%B1%D1%83%D1%80%D0%B0%D1%88%D0%BA%D0%B0/1690003087" title="Чебурашка - песня из мультфильма"></iframe>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="service-item">
+                <div class="service-item photo-service">
                     <h3>Фото и видеосъемка</h3>
                     <p>В подарок - профессиональная фото и видеосъемка</p>
                 </div>
                 
-                <div class="service-item">
+                <div class="service-item gift-service">
                     <h3>Вручение подарка</h3>
                     <p>Помощь в торжественном вручении подарка виновнику торжества</p>
                 </div>
@@ -594,20 +1034,20 @@
                 <h2>Детали и стоимость</h2>
                 
                 <div class="details-grid">
-                    <div class="detail-card">
+                    <div class="detail-card service-area">
                         <h3>Зона обслуживания</h3>
                         <p>Выезжаем по Оренбургу и Оренбургской области</p>
                         <p>Ездим на любые праздники</p>
                     </div>
                     
-                    <div class="detail-card">
+                    <div class="detail-card price-service">
                         <h3>Стоимость</h3>
                         <p>Начальная стоимость по городу от</p>
                         <div class="price">3000 руб.</div>
                         <p>Стоимость зависит от вашего местоположения</p>
                     </div>
                     
-                    <div class="detail-card">
+                    <div class="detail-card extra-service">
                         <h3>Дополнительная услуга</h3>
                         <p>Можем купить шары и цветы по пути к вам</p>
                         <p>Оплата по чеку + доставка</p>
@@ -617,17 +1057,31 @@
             </section>
             
             <section class="additional">
-                <h2>Галерея</h2>
-                <div class="gallery-container" onclick="openModal(0)">
-                    <div class="card-stack">
-                        <img class="card" src="https://images2.imgbox.com/66/41/fQ20xJeJ_o.jpeg" alt="Плюшка">
-                        <img class="card" src="https://images2.imgbox.com/3a/82/hRJuXsMD_o.jpeg" alt="Плюшка и Чебурашка">
-                        <img class="card" src="https://images2.imgbox.com/5d/da/KDWNxxxv_o.jpeg" alt="Чебурашка">
-                        <img class="card" src="https://images2.imgbox.com/40/17/MBbsuu95_o.jpeg" alt="Праздник">
-                        <img class="card" src="https://images2.imgbox.com/5c/7d/ou70vL5s_o.jpeg" alt="Праздник">
+                <div class="container">
+                    <h2>Галерея наших праздников</h2>
+                    
+                    <div class="text-content">
+                        <h3>О наших праздниках</h3>
+                        <p>Мы создаем незабываемые моменты для детей и взрослых. Мы умеем найти подход к каждому ребенку.</p>
+                        <p>Каждая фотография в нашей галерее - это история радости, смеха и счастливых моментов, которые мы дарим на каждом празднике.</p>
+                    </div>
+                    
+                    <div class="fan-wrapper">
+                        <div class="fan-gallery">
+                            <div class="fan-container" id="fanContainer">
+                                <!-- Карточки веера будут созданы здесь -->
+                            </div>
+                            
+                            <div class="grid-gallery" id="gridGallery">
+                                <!-- Сетка галереи будет создана здесь -->
+                            </div>
+                            
+                            <div class="back-to-fan" id="backToFan">
+                                <button class="back-btn" onclick="closeGridGallery()" aria-label="Вернуться к вееру изображений">← Вернуться к вееру</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <p class="gallery-text">Нажмите, чтобы посмотреть все фото</p>
             </section>
             
             <section class="contacts">
@@ -639,7 +1093,7 @@
                             <div class="contact-name">Дарья</div>
                             <div class="contact-role">Менеджер по организации праздников</div>
                         </div>
-                        <a href="tel:89083222668" class="phone-btn">8-908-322-26-68</a>
+                        <a href="tel:89083222668" class="phone-btn" aria-label="Позвонить Дарье по номеру 8-908-322-26-68">8-908-322-26-68</a>
                     </div>
                     
                     <div class="contact-person">
@@ -647,7 +1101,7 @@
                             <div class="contact-name">Владислав</div>
                             <div class="contact-role">Координатор мероприятий</div>
                         </div>
-                        <a href="tel:89018229730" class="phone-btn">8-901-822-97-30</a>
+                        <a href="tel:89018229730" class="phone-btn" aria-label="Позвонить Владиславу по номеру 8-901-822-97-30">8-901-822-97-30</a>
                     </div>
                 </div>
                 
@@ -655,192 +1109,180 @@
                     Оплата: наличные или перевод на карту
                 </div>
             </section>
-            
-            <footer>
-                <div class="container">
-                    <p>Компания "Большие Радости" - организация праздников в Оренбурге и области</p>
-                    <p>© 2023 Все права защищены</p>
-                </div>
-            </footer>
-        </div>
+        </main>
+        
+        <footer role="contentinfo">
+            <div class="container">
+                <p>Компания "Большие Радости" - организация праздников в Оренбурге и области</p>
+                <p>© 2023 Все права защищены</p>
+            </div>
+        </footer>
     </div>
 
-    <!-- Модальное окно для галереи -->
-    <div id="galleryModal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <span class="prev" onclick="changeSlide(-1)">&#10094;</span>
-        <span class="next" onclick="changeSlide(1)">&#10095;</span>
-        <img class="modal-content" id="modalImage">
-        <div class="image-counter" id="imageCounter">1 / 25</div>
-        <div class="caption" id="caption"></div>
+    <!-- Модальное окно для полноэкранного просмотра с навигацией -->
+    <div id="galleryModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalImage">
+        <span class="close" onclick="closeModal()" aria-label="Закрыть галерею">&times;</span>
+        <button class="nav-btn prev" onclick="changeSlide(-1)" aria-label="Предыдущее изображение">&#10094;</button>
+        <button class="nav-btn next" onclick="changeSlide(1)" aria-label="Следующее изображение">&#10095;</button>
+        <img class="modal-content" id="modalImage" alt="" role="img">
+        <div class="image-counter" id="imageCounter">1 / 15</div>
     </div>
 
     <script>
-        // Анимация салюта 
-        const canvas = document.getElementById("magicCanvas");
-        const ctx = canvas.getContext("2d");
-        let width, height;
-        let particles = [];
-        
-        // Функция для изменения размера canvas
-        function resize() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-        }
-        
-        window.addEventListener("resize", resize);
-        resize();
-        
-        // Класс для частиц салюта
-        class Particle {
-            constructor(x, y, vx, vy, size, color, life) {
-                this.x = x;
-                this.y = y;
-                this.vx = vx;
-                this.vy = vy;
-                this.size = size;
-                this.color = color;
-                this.life = life;
-                this.opacity = 1;
-            }
-            
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-                this.vy += 0.05; // гравитация
-                this.life--;
-                this.opacity = this.life / 100;
-            }
-            
-            draw(ctx) {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(${this.color}, ${this.opacity})`;
-                ctx.fill();
-            }
-        }
-        
-        // Создание взрыва салюта
-        function createExplosion(x, y) {
-            for (let i = 0; i < 80; i++) {
-                const angle = Math.random() * 2 * Math.PI;
-                const speed = Math.random() * 4 + 1;
-                const vx = Math.cos(angle) * speed;
-                const vy = Math.sin(angle) * speed;
-                const size = Math.random() * 4 + 1;
-                const color = `${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}`;
-                particles.push(new Particle(x, y, vx, vy, size, color, 100));
-            }
-        }
-        
-        // Автоматический запуск салютов
-        function autoFireworks() {
-            if (Math.random() < 0.02) {
-                const x = Math.random() * width;
-                const y = Math.random() * height / 2;
-                createExplosion(x, y);
-            }
-        }
-        
-        // Анимация
-        function animate() {
-            ctx.fillStyle = "rgba(249, 249, 249, 0.1)";
-            ctx.fillRect(0, 0, width, height);
-            
-            particles = particles.filter((p) => p.life > 0);
-            particles.forEach((p) => {
-                p.update();
-                p.draw(ctx);
-            });
-            
-            autoFireworks();
-            requestAnimationFrame(animate);
-        }
-        
-        animate();
-        
-        // Запуск салюта по клику
-        canvas.style.pointerEvents = "auto";
-        canvas.addEventListener("click", (e) => {
-            createExplosion(e.clientX, e.clientY);
-        });
-        
-        // Анимация появления элементов при прокрутке
-        document.addEventListener('DOMContentLoaded', function() {
-            const animateOnScroll = function() {
-                const elements = document.querySelectorAll('.service-item, .detail-card, .character, .gallery-container, .contact-person');
-                
-                elements.forEach(element => {
-                    const elementPosition = element.getBoundingClientRect().top;
-                    const screenPosition = window.innerHeight / 1.2;
-                    
-                    if (elementPosition < screenPosition) {
-                        element.style.opacity = '1';
-                        element.style.transform = 'translateY(0)';
-                    }
-                });
-            };
-            
-            const animatedElements = document.querySelectorAll('.service-item, .detail-card, .character, .gallery-container, .contact-person');
-            animatedElements.forEach(element => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(20px)';
-                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            });
-            
-            window.addEventListener('load', animateOnScroll);
-            window.addEventListener('scroll', animateOnScroll);
-        });
-
-        // Функционал галереи
-        let currentSlideIndex = 0;
+        // Массив изображений галереи
         const galleryImages = [
-            {src: "https://images2.imgbox.com/66/41/fQ20xJeJ_o.jpeg", alt: "Плюшка"},
-            {src: "https://images2.imgbox.com/3a/82/hRJuXsMD_o.jpeg", alt: "Плюшка и Чебурашка"},
-            {src: "https://images2.imgbox.com/5d/da/KDWNxxxv_o.jpeg", alt: "Чебурашка"},
-            {src: "https://images2.imgbox.com/40/17/MBbsuu95_o.jpeg", alt: "Праздник"},
-            {src: "https://images2.imgbox.com/5c/7d/ou70vL5s_o.jpeg", alt: "Праздник"},
-            {src: "https://images2.imgbox.com/7c/b9/tc34Auei_o.jpeg", alt: "Праздник"},
-            {src: "https://images2.imgbox.com/cc/65/x1646prl_o.jpeg", alt: "Праздник"},
-            {src: "https://images2.imgbox.com/77/db/CynMjfr6_o.jpeg", alt: "Праздник"},
-            {src: "https://images2.imgbox.com/4b/08/7Yy3P1Su_o.jpeg", alt: "Праздник"},
-            {src: "https://images2.imgbox.com/0a/d1/eIiNttoM_o.jpeg", alt: "Праздник"},
-            {src: "https://images2.imgbox.com/c6/9b/F53ZXMQ5_o.jpeg", alt: "Праздник"},
-            {src: "https://images2.imgbox.com/62/40/855jKz3G_o.jpeg", alt: "Праздник"},
-            {src: "https://images2.imgbox.com/46/16/XMMuOdJV_o.jpeg", alt: "Праздник"},
-            {src: "https://images2.imgbox.com/6c/37/ufxlpyrd_o.jpeg", alt: "Праздник"},
-            {src: "https://images2.imgbox.com/53/da/RvVYYM5g_o.jpeg", alt: "Праздник"},
-            {src: "https://images2.imgbox.com/9f/47/FOEPQmuj_o.jpeg", alt: "Праздник"},
-            {src: "https://images2.imgbox.com/61/82/luZx9UcU_o.jpeg", alt: "Праздник"},
-            {src: "https://images2.imgbox.com/9c/5d/1b5FH6Mz_o.jpeg", alt: "Праздник"},
-            {src: "https://images2.imgbox.com/3a/ce/MghpebkF_o.jpeg", alt: "Праздник"},
-            {src: "https://images2.imgbox.com/cb/79/as7qmmEO_o.jpeg", alt: "Праздник"},
-            {src: "https://images2.imgbox.com/6a/92/ZhN64cq7_o.jpeg", alt: "Праздник"},
-            {src: "https://images2.imgbox.com/63/a2/EIkPpFAJ_o.jpeg", alt: "Праздник"},
-            {src: "https://images2.imgbox.com/09/13/E81WIxCb_o.jpeg", alt: "Праздник"},
-            {src: "https://images2.imgbox.com/7a/07/s1EtBG9v_o.jpeg", alt: "Праздник"},
-            {src: "https://images2.imgbox.com/d9/97/VqOFjYaz_o.jpeg", alt: "Праздник"}
+            {src: "https://images2.imgbox.com/4b/08/7Yy3P1Su_o.jpeg", alt: "Чебурашка и мишка вместе", title: "Чебурашка и мишка вместе"},
+            {src: "https://images2.imgbox.com/53/da/RvVYYM5g_o.jpeg", alt: "Плюшка-мишка", title: "Плюшка-мишка"},
+            {src: "https://images2.imgbox.com/7c/b9/tc34Auei_o.jpeg", alt: "Чебурашка", title: "Чебурашка"},
+            {src: "https://images2.imgbox.com/61/82/luZx9UcU_o.jpeg", alt: "Чебурашка и танк", title: "Чебурашка и танк"},
+            {src: "https://images2.imgbox.com/cb/79/as7qmmEO_o.jpeg", alt: "Мишка и вертолет", title: "Мишка и вертолет"},
+            {src: "https://images2.imgbox.com/9c/5d/1b5FH6Mz_o.jpeg", alt: "Мишка, Чебурашка и вертолет", title: "Мишка, Чебурашка и вертолет"},
+            {src: "https://images2.imgbox.com/40/17/MBbsuu95_o.jpeg", alt: "Мишка на аллее", title: "Мишка на аллее"},
+            {src: "https://images2.imgbox.com/cc/65/x1646prl_o.jpeg", alt: "Чебурашка на аллее", title: "Чебурашка на аллее"},
+            {src: "https://images2.imgbox.com/c6/9b/F53ZXMQ5_o.jpeg", alt: "Чебурашка и пень", title: "Чебурашка и пень"},
+            {src: "https://images2.imgbox.com/46/16/XMMuOdJV_o.jpeg", alt: "Мишка и пень", title: "Мишка и пень"},
+            {src: "https://images2.imgbox.com/7a/07/s1EtBG9v_o.jpeg", alt: "Мишка и Чебурашка на лавочке", title: "Мишка и Чебурашка на лавочке"},
+            {src: "https://images2.imgbox.com/09/13/E81WIxCb_o.jpeg", alt: "Мишка на зеленой аллее", title: "Мишка на зеленой аллее"},
+            {src: "https://images2.imgbox.com/9f/47/FOEPQmuj_o.jpeg", alt: "Чебурашка на аллее", title: "Чебурашка на аллее"},
+            {src: "https://images2.imgbox.com/66/41/fQ20xJeJ_o.jpeg", alt: "Мишка и Лена", title: "Мишка и Лена"},
+            {src: "https://images2.imgbox.com/3a/82/hRJuXsMD_o.jpeg", alt: "Мишка и Даня", title: "Мишка и Даня"}
         ];
 
-        function openModal(index) {
-            // Проверяем корректность индекса
-            if (index < 0 || index >= galleryImages.length) {
-                console.error('Invalid gallery index:', index);
-                return;
+        let currentSlideIndex = 0;
+        let fanCardsOrder = [0, 1, 2];
+
+        // Функция для переключения отображения списка песен
+        function toggleSongsList() {
+            const songsList = document.getElementById('songsList');
+            const songToggle = document.getElementById('songToggle');
+            
+            if (songsList && songToggle) {
+                if (songsList.style.display === 'block') {
+                    songsList.style.display = 'none';
+                    songsList.setAttribute('aria-hidden', 'true');
+                    songToggle.setAttribute('aria-expanded', 'false');
+                } else {
+                    songsList.style.display = 'block';
+                    songsList.setAttribute('aria-hidden', 'false');
+                    songToggle.setAttribute('aria-expanded', 'true');
+                }
             }
+        }
+
+        // Функции для работы с веером и сеткой
+        function openGridGallery() {
+            document.getElementById('fanContainer').style.display = 'none';
+            document.getElementById('gridGallery').style.display = 'grid';
+            document.getElementById('backToFan').style.display = 'block';
+        }
+
+        function closeGridGallery() {
+            document.getElementById('gridGallery').style.display = 'none';
+            document.getElementById('backToFan').style.display = 'none';
+            document.getElementById('fanContainer').style.display = 'block';
+        }
+
+        // Функция для перестановки карточек в веере
+        function rearrangeFanCards(clickedIndex) {
+            const clickedPosition = fanCardsOrder.indexOf(clickedIndex);
             
+            if (clickedPosition === -1 || clickedPosition === 0) return;
+            
+            const currentFirstCard = fanCardsOrder[0];
+            fanCardsOrder[0] = clickedIndex;
+            fanCardsOrder[clickedPosition] = currentFirstCard;
+            
+            updateFanDisplay();
+        }
+
+        // Функция для обновления отображения веера
+        function updateFanDisplay() {
+            const fanContainer = document.getElementById('fanContainer');
+            fanContainer.innerHTML = '';
+            
+            fanCardsOrder.forEach((cardIndex, position) => {
+                const card = document.createElement('img');
+                card.className = 'fan-card';
+                card.src = galleryImages[cardIndex].src;
+                card.alt = galleryImages[cardIndex].alt;
+                card.setAttribute('data-index', cardIndex);
+                card.onerror = function() { 
+                    this.classList.add('fallback');
+                    this.innerHTML = '<span>Изображение не загружено</span>';
+                };
+                
+                if (position === 0) {
+                    card.classList.add('card-front');
+                } else if (position === 1) {
+                    card.classList.add('card-middle');
+                } else {
+                    card.classList.add('card-back');
+                }
+                
+                card.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const index = parseInt(this.getAttribute('data-index'));
+                    
+                    if (position === 0) {
+                        openGridGallery();
+                    } else {
+                        rearrangeFanCards(index);
+                    }
+                });
+                
+                fanContainer.appendChild(card);
+            });
+        }
+
+        // Функция для создания сетки галереи
+        function createGridGallery() {
+            const gridGallery = document.getElementById('gridGallery');
+            gridGallery.innerHTML = '';
+            
+            galleryImages.forEach((image, index) => {
+                const gridItem = document.createElement('div');
+                gridItem.className = 'grid-item';
+                gridItem.setAttribute('data-index', index);
+                
+                const img = document.createElement('img');
+                img.src = image.src;
+                img.alt = image.alt;
+                img.loading = "lazy";
+                img.onerror = function() {
+                    this.style.display = 'none';
+                    gridItem.classList.add('fallback');
+                    gridItem.innerHTML = '<span>Изображение не загружено</span>';
+                };
+                
+                gridItem.appendChild(img);
+                gridItem.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    openModal(index);
+                });
+                
+                gridGallery.appendChild(gridItem);
+            });
+        }
+
+        // Функции для модального окна с навигацией
+        function openModal(index) {
             currentSlideIndex = index;
-            document.getElementById("galleryModal").style.display = "block";
-            updateModalImage();
-            
-            // Добавляем класс для блокировки прокрутки body
-            document.body.style.overflow = 'hidden';
+            const modal = document.getElementById("galleryModal");
+            if (modal) {
+                modal.style.display = "flex";
+                modal.setAttribute('aria-hidden', 'false');
+                updateModalImage();
+                document.body.style.overflow = 'hidden';
+            }
         }
 
         function closeModal() {
-            document.getElementById("galleryModal").style.display = "none";
-            // Восстанавливаем прокрутку body
-            document.body.style.overflow = 'auto';
+            const modal = document.getElementById("galleryModal");
+            if (modal) {
+                modal.style.display = "none";
+                modal.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = 'auto';
+            }
         }
 
         function changeSlide(direction) {
@@ -856,23 +1298,54 @@
         function updateModalImage() {
             const modalImg = document.getElementById("modalImage");
             const counter = document.getElementById("imageCounter");
-            const caption = document.getElementById("caption");
-            modalImg.src = galleryImages[currentSlideIndex].src;
-            modalImg.alt = galleryImages[currentSlideIndex].alt;
-            caption.innerHTML = galleryImages[currentSlideIndex].alt;
-            counter.innerHTML = `${currentSlideIndex + 1} / ${galleryImages.length}`;
+            
+            if (modalImg && counter) {
+                modalImg.src = galleryImages[currentSlideIndex].src;
+                modalImg.alt = galleryImages[currentSlideIndex].alt;
+                counter.innerHTML = `${currentSlideIndex + 1} / ${galleryImages.length}`;
+            }
         }
 
-        // Закрытие модального окна при клике вне изображения
-        document.getElementById("galleryModal").addEventListener("click", function(event) {
-            if (event.target === this) {
-                closeModal();
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            updateFanDisplay();
+            createGridGallery();
+            
+            document.getElementById('fanContainer').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    openGridGallery();
+                }
+            });
+            
+            // Обработчик клика на текст "5 музыкальных песен"
+            const songToggle = document.getElementById('songToggle');
+            if (songToggle) {
+                songToggle.addEventListener('click', toggleSongsList);
+                
+                // Обработчик нажатия клавиши для доступности
+                songToggle.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        toggleSongsList();
+                    }
+                });
             }
         });
 
-        // Навигация по галерее с помощью клавиатуры
+        // Закрытие модального окна при клике вне изображения
+        const galleryModal = document.getElementById("galleryModal");
+        if (galleryModal) {
+            galleryModal.addEventListener("click", function(event) {
+                if (event.target === this) {
+                    closeModal();
+                }
+            });
+        }
+
+        // Навигация с клавиатуры
         document.addEventListener("keydown", function(event) {
-            if (document.getElementById("galleryModal").style.display === "block") {
+            const modal = document.getElementById("galleryModal");
+            if (modal && modal.style.display === "flex") {
                 if (event.key === "ArrowLeft") {
                     changeSlide(-1);
                 } else if (event.key === "ArrowRight") {
@@ -887,14 +1360,16 @@
         let touchStartX = 0;
         let touchEndX = 0;
 
-        document.getElementById("galleryModal").addEventListener("touchstart", function(event) {
-            touchStartX = event.changedTouches[0].screenX;
-        });
+        if (galleryModal) {
+            galleryModal.addEventListener("touchstart", function(event) {
+                touchStartX = event.changedTouches[0].screenX;
+            });
 
-        document.getElementById("galleryModal").addEventListener("touchend", function(event) {
-            touchEndX = event.changedTouches[0].screenX;
-            handleSwipe();
-        });
+            galleryModal.addEventListener("touchend", function(event) {
+                touchEndX = event.changedTouches[0].screenX;
+                handleSwipe();
+            });
+        }
 
         function handleSwipe() {
             if (touchEndX < touchStartX - 50) {
